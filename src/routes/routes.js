@@ -8,6 +8,7 @@ import Icons from "@/pages/Icons.vue";
 import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
+import index from "@/views/index.vue";
 
 const routes = [
   {
@@ -59,6 +60,11 @@ const routes = [
         component: UpgradeToPRO
       }
     ]
+  },
+  {
+    path:'/audify',
+    name:'audify',
+    component:index,
   }
 ];
 
