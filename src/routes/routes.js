@@ -9,6 +9,8 @@ import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 import index from "@/views/index.vue";
+import team from "@/views/team/viewTeam.vue";
+import employee from "@/views/employee/viewEmployee.vue";
 
 const routes = [
   {
@@ -19,53 +21,64 @@ const routes = [
       {
         path: "dashboard",
         name: "Dashboard",
-        component: Dashboard
+        component: Dashboard,
       },
       {
         path: "user",
         name: "User Profile",
-        component: UserProfile
+        component: UserProfile,
       },
       {
         path: "table",
         name: "Table List",
-        component: TableList
+        component: TableList,
       },
       {
         path: "typography",
         name: "Typography",
-        component: Typography
+        component: Typography,
       },
       {
         path: "icons",
         name: "Icons",
-        component: Icons
+        component: Icons,
       },
       {
         path: "maps",
         name: "Maps",
         meta: {
-          hideFooter: true
+          hideFooter: true,
         },
-        component: Maps
+        component: Maps,
       },
       {
         path: "notifications",
         name: "Notifications",
-        component: Notifications
+        component: Notifications,
       },
       {
         path: "upgrade",
         name: "Upgrade to PRO",
-        component: UpgradeToPRO
-      }
-    ]
+        component: UpgradeToPRO,
+      },
+    ],
   },
   {
-    path:'/audify',
-    name:'audify',
-    component:index,
-  }
+    path: "/audify",
+    name: "audify",
+    component: index,
+  },
+  {
+    path: "/audify/team",
+    name: "team",
+    component: team,
+  },
+  ,
+  {
+    path: "/audify/employee",
+    name: "employee",
+    component: employee,
+  },
 ];
 
 export default routes;

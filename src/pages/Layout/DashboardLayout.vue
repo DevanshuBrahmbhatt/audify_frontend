@@ -11,6 +11,14 @@
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
       </sidebar-link>
+      <sidebar-link to="/audify/team">
+        <md-icon>people</md-icon>
+        <p>Team Managment</p>
+      </sidebar-link>
+      <sidebar-link to="/audify/employee">
+        <md-icon>person</md-icon>
+        <p>Employee Managment</p>
+      </sidebar-link>
       <sidebar-link to="/user">
         <md-icon>person</md-icon>
         <p>User Profile</p>

@@ -1,7 +1,5 @@
 <template>
-
-  <h1>Audify</h1>
-
+  <h1>Emplooyee</h1>
 </template>
 
 <script>
