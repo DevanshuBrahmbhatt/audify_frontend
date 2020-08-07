@@ -1,5 +1,5 @@
-<template>
-  <md-card class="md-card-profile">
+<!-- <template>
+   <md-card class="md-card-profile">
     <div class="md-card-avatar">
       <img class="img" :src="cardUserImage" />
     </div>
@@ -14,7 +14,7 @@
       </p>
       <md-button class="md-round md-success">Follow</md-button>
     </md-card-content>
-  </md-card>
+  </>
 </template>
 <script>
 export default {
@@ -30,4 +30,4 @@ export default {
   }
 };
 </script>
-<style></style>
+<style></style>-->
