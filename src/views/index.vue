@@ -51,16 +51,14 @@ export default {
   },
   methods: {
     submit: function() {
-      console.log(this.password + ""+this.username );
+      console.log(this.password + "" + this.username);
 
-      if(this.username === 'user' && this.password === 'user'){
+      if (this.username === "user" && this.password === "user") {
         this.$router.push({ path: `/audify/team` });
+      } else {
+        this.$router.push({ path: `/` });
       }
-      else{
-         this.$router.push({ path: `/` });        
-      }
-
-},
+    },
   },
 };
 </script>

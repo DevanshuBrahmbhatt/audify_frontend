@@ -10,6 +10,8 @@ import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 import index from "@/views/index.vue";
 import team from "@/views/team/viewTeam.vue";
+import teamDetail from "@/views/team/detailsTeam.vue";
+import teamAdd from "@/views/team/addteam.vue";
 import employee from "@/views/employee/viewEmployee.vue";
 
 const routes = [
@@ -72,6 +74,16 @@ const routes = [
     path: "/audify/team",
     name: "team",
     component: team,
+  },
+  {
+    path: "/audify/team/detail/:teamId",
+    name: "team dtail",
+    component: teamDetail,
+  },
+  {
+    path: "/audify/team/add",
+    name: "team add",
+    component: teamAdd,
   },
   ,
   {
