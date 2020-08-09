@@ -52,6 +52,7 @@
 import  axios from 'axios';
 export default {
 
+
 mounted() {
  axios.get('https://api.audify.live/team/viewall')
 .then((response)=>{

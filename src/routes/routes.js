@@ -63,34 +63,35 @@ const routes = [
         name: "Upgrade to PRO",
         component: UpgradeToPRO,
       },
+      {
+        path: "/audify",
+        name: "audify",
+        component: index,
+      },
+      {
+        path: "/audify/team",
+        name: "team",
+        component: team,
+      },
+      {
+        path: "/audify/team/detail/:teamId",
+        name: "team dtail",
+        component: teamDetail,
+      },
+      {
+        path: "/audify/team/add",
+        name: "team add",
+        component: teamAdd,
+      },
+      ,
+      {
+        path: "/audify/employee",
+        name: "employee",
+        component: employee,
+      },
     ],
   },
-  {
-    path: "/audify",
-    name: "audify",
-    component: index,
-  },
-  {
-    path: "/audify/team",
-    name: "team",
-    component: team,
-  },
-  {
-    path: "/audify/team/detail/:teamId",
-    name: "team dtail",
-    component: teamDetail,
-  },
-  {
-    path: "/audify/team/add",
-    name: "team add",
-    component: teamAdd,
-  },
-  ,
-  {
-    path: "/audify/employee",
-    name: "employee",
-    component: employee,
-  },
+  
 ];
 
 export default routes;
