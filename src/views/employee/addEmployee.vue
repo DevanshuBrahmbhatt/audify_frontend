@@ -1,0 +1,104 @@
+<template>
+  <v-app>
+    <v-container>
+      <form>
+        <md-card>
+          <md-card-header :data-background-color="dataBackgroundColor">
+            <h4 class="title">Add New Employee</h4>
+            <p class="category">Enter Your New Employee Details Here</p>
+          </md-card-header>
+
+          <md-card-content>
+            <div class="md-layout">
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>First Name</label>
+                  <md-input v-model="fname" type="text"></md-input>
+                </md-field>
+              </div>
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Last Name</label>
+                  <md-input v-model="lname" type="text"></md-input>
+                </md-field>
+              </div>
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Emp Id</label>
+                  <md-input v-model="empId" type="text"></md-input>
+                </md-field>
+              </div>
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Position</label>
+                  <md-input v-model="role" type="text"></md-input>
+                </md-field>
+              </div>
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Join Date</label>
+                  <md-input v-model="joinDate" type="date"></md-input>
+                </md-field>
+              </div>
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Mobile No</label>
+                  <md-input v-model="mobileNo" type="number"></md-input>
+                </md-field>
+              </div>
+
+              <div class="md-layout-item md-small-size-100 md-size-100">
+                <md-button style="cursor:pointer;" v-on:click="submit"
+                  >Upload Details</md-button
+                >
+              </div>
+            </div>
+          </md-card-content>
+        </md-card>
+      </form>
+    </v-container>
+  </v-app>
+</template>
+<script>
+import axios from "axios";
+export default {
+  name: "edit-profile-form",
+  props: {
+    dataBackgroundColor: {
+      type: String,
+      default: "",
+    },
+  },
+  data() {
+    return {
+      fname: "",
+      lname: "",
+      role: "",
+      joinDate: "",
+      mobileNo: "",
+      empId: "",
+    };
+  },
+  methods: {
+    submit: function() {
+      axios
+        .post("https://api.audify.live/employee/create", {
+          firstName: this.fname,
+          lastName: this.lname,
+          role: this.role,
+          empId: this.empId,
+          mobileNo: this.mobileNo,
+          joinDate: this.joinDate,
+        })
+        .then((response) => {
+
+          this.$router.push({ path: `/audify/employee` });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
+</script>
+<style></style>

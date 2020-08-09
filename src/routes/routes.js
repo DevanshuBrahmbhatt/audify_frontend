@@ -8,11 +8,16 @@ import Icons from "@/pages/Icons.vue";
 import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
 import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
+
 import index from "@/views/index.vue";
-import team from "@/views/team/viewTeam.vue";
-import teamDetail from "@/views/team/detailsTeam.vue";
-import teamAdd from "@/views/team/addteam.vue";
-import employee from "@/views/employee/viewEmployee.vue";
+
+import teams from "@/views/team/allTeams.vue";
+import team from "@/views/team/team.vue";
+import teamAdd from "@/views/team/addTeam.vue";
+
+import employees from "@/views/employee/allEmployees.vue";
+import employeeAdd from "@/views/employee/addEmployee.vue";
+import employee from "@/views/employee/employee.vue";
 
 const routes = [
   {
@@ -70,28 +75,38 @@ const routes = [
       },
        {
         path: "/audify/team",
-        name: "team",
-        component: team,
+        name: "Teams",
+        component: teams,
       },
       {
         path: "/audify/team/detail/:teamId",
-        name: "team dtail",
-        component: teamDetail,
+        name: "Team Details",
+        component: team,
       },
       {
         path: "/audify/team/add",
-        name: "team add",
+        name: "Add Team",
         component: teamAdd,
       },
       ,
       {
         path: "/audify/employee",
-        name: "employee",
+        name: "All Employees",
+        component: employees,
+      },
+      {
+        path: "/audify/employee/add",
+        name: "Add Employee",
+        component: employeeAdd,
+      },
+      {
+        path: "/audify/employee/detail/:empId",
+        name: "Employee Details",
         component: employee,
       },
     ],
   },
-  
+
 ];
 
 export default routes;
