@@ -24,12 +24,6 @@
               </div>
               <div class="md-layout-item md-small-size-100 md-size-50">
                 <md-field>
-                  <label>Emp Id</label>
-                  <md-input v-model="empId" type="text"></md-input>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100 md-size-50">
-                <md-field>
                   <label>Position</label>
                   <md-input v-model="role" type="text"></md-input>
                 </md-field>
@@ -74,18 +68,18 @@
 </template>
 <script>
 import axios from "axios";
+import url from "../../url";
 export default {
   mounted() {
     const empId = this.$route.params.empId;
     axios
-      .get("https://api.audify.live/employee/view/" + empId)
+      .get(url.url+"/employee/view/" + empId)
       .then((response) => {
         (this.fname = response.data.data[0].firstName),
           (this.lname = response.data.data[0].lastName),
           (this.role = response.data.data[0].role),
           (this.joinDate = response.data.data[0].joinDate),
-          (this.mobileNo = response.data.data[0].mobileNo),
-          (this.empId = response.data.data[0].empId);
+          (this.mobileNo = response.data.data[0].mobileNo);
       })
       .catch((err) => {
         console.log(err);
@@ -111,9 +105,10 @@ export default {
   },
   methods: {
     submit: function() {
+          const empId = this.$route.params.empId;
       alert("click submit");
       axios
-        .put("https://api.audify.live/employee/update/" + this.empId, {
+        .put(url.url+"/employee/update/" + empId, {
           firstName: this.fname,
           lastName: this.lname,
           role: this.role,
@@ -121,27 +116,24 @@ export default {
           joinDate: this.joinDate,
         })
         .then((response) => {
-          this.$router.push({ path: '/employee' });
+          this.$router.push({ path: "/employee" });
         })
         .catch((err) => {
           console.log(err);
         });
     },
     deleteEmp: function() {
-    alert("click delete");
-    console.log("delete");
-    axios
-      .delete("https://api.audify.live/employee/delete/" + this.empId)
-      .then((response) => {
-        this.$router.push({ path: `/employee` });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+   const empId = this.$route.params.empId;
+      axios
+        .delete(url.url+"/employee/delete/" + empId)
+        .then((response) => {
+          this.$router.push({ path: `/employee` });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
-  },
-
-  
 };
 </script>
 <style></style>

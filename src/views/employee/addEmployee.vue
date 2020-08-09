@@ -24,12 +24,6 @@
               </div>
               <div class="md-layout-item md-small-size-100 md-size-50">
                 <md-field>
-                  <label>Emp Id</label>
-                  <md-input v-model="empId" type="text"></md-input>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100 md-size-50">
-                <md-field>
                   <label>Position</label>
                   <md-input v-model="role" type="text"></md-input>
                 </md-field>
@@ -61,6 +55,7 @@
 </template>
 <script>
 import axios from "axios";
+import url from "../../url";
 export default {
   name: "edit-profile-form",
   props: {
@@ -76,17 +71,15 @@ export default {
       role: "",
       joinDate: "",
       mobileNo: "",
-      empId: "",
     };
   },
   methods: {
     submit: function() {
       axios
-        .post("https://api.audify.live/employee/create", {
+        .post(url.url+"/employee/create", {
           firstName: this.fname,
           lastName: this.lname,
           role: this.role,
-          empId: this.empId,
           mobileNo: this.mobileNo,
           joinDate: this.joinDate,
         })

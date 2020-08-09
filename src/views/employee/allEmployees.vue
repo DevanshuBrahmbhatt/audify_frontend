@@ -9,9 +9,7 @@
             <v-row>
               <v-col lg="12">
                 <h3>Employee Dashboard</h3>
-                <v-btn class="success" :href="'/employee/add'"
-                  >Add item</v-btn
-                >
+                <v-btn class="success" :href="'/employee/add'">Add New Employee</v-btn>
               </v-col>
             </v-row>
 
@@ -28,9 +26,6 @@
                       :table-header-color="tableHeaderColor"
                     >
                       <md-table-row slot="md-table-row" slot-scope="{ item }">
-                        <md-table-cell md-label="Emp ID">{{
-                          item._id
-                        }}</md-table-cell>
                         <md-table-cell md-label="Emp Name">{{
                           item.firstName
                         }}</md-table-cell>
@@ -63,10 +58,11 @@
 
 <script>
 import axios from "axios";
+import url from "../../url";
 export default {
   mounted() {
     axios
-      .get("https://api.audify.live/employee/viewall")
+      .get(url.url+"/employee/viewall")
       .then((response) => {
         this.users = response.data.data;
       })
@@ -77,7 +73,6 @@ export default {
 
   data() {
     return {
-      items: "",
       users: "",
     };
   },

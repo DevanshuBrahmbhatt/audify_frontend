@@ -18,12 +18,6 @@
               </div>
               <div class="md-layout-item md-small-size-100 md-size-50">
                 <md-field>
-                  <label>Team Id</label>
-                  <md-input v-model="teamId" type="text"></md-input>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100 md-size-50">
-                <md-field>
                   <label>Manager Name</label>
                   <md-input v-model="manager" type="text"></md-input>
                 </md-field>
@@ -94,6 +88,7 @@
 </template>
 <script>
 import axios from 'axios';
+import url from '../../url';
 export default {
   name: "edit-profile-form",
   props: {
@@ -105,7 +100,6 @@ export default {
   data() {
     return {
       manager: "",
-      teamId: "",
       name: "",
       project: "",
       employees: [
@@ -120,10 +114,9 @@ export default {
 
     submit: function() {
 
-      axios.post('https://api.audify.live/team/create',{
+      axios.post(url.url+'/team/create',{
           name:this.name,
           manager:this.manager,
-          teamId:this.teamId,
           project:this.project,
           employee:this.employees
       }).then((response)=>{

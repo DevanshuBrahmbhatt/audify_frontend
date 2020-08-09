@@ -18,12 +18,6 @@
               </div>
               <div class="md-layout-item md-small-size-100 md-size-50">
                 <md-field>
-                  <label>Team Id</label>
-                  <md-input v-model="teamId" type="text" readonly></md-input>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100 md-size-50">
-                <md-field>
                   <label>Manager Name</label>
                   <md-input v-model="manager" type="text"></md-input>
                 </md-field>
@@ -106,16 +100,16 @@
 </template>
 <script>
 import axios from "axios";
+import url from "../../url";
 export default {
   mounted() {
     const teamId = this.$route.params.teamId;
     axios
-      .get("https://api.audify.live/team/view/" + teamId)
+      .get(url.url+"/team/view/" + teamId)
       .then((response) => {
         (this.manager = response.data.data[0].manager),
           (this.name = response.data.data[0].name),
           (this.employees = response.data.data[0].employee),
-          (this.teamId = response.data.data[0].teamId),
           (this.project = response.data.data[0].project);
       })
       .catch((err) => {
@@ -145,8 +139,9 @@ export default {
   },
   methods: {
     submit: function() {
+          const teamId = this.$route.params.teamId;
       axios
-        .put("https://api.audify.live/team/update/" + this.teamId, {
+        .put(url.url+"/team/update/" + teamId, {
           name: this.name,
           manager: this.manager,
           project: this.project,
@@ -161,8 +156,9 @@ export default {
     },
 
     deleteTeam: function() {
+                const teamId = this.$route.params.teamId;
       axios
-        .delete("https://api.audify.live/team/delete/" + this.teamId)
+        .delete(url.url+"/team/delete/" + teamId)
         .then((response) => {
           this.$router.push({ path: `/team` });
         })

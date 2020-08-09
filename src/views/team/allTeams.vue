@@ -28,10 +28,9 @@
                     <md-card-content>
 <md-table v-model="users" :table-header-color="tableHeaderColor">
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Team ID">{{ item.teamId }}</md-table-cell>
         <md-table-cell md-label="Team Name">{{ item.name }}</md-table-cell>
         <md-table-cell md-label="Manager Name">{{ item.manager }}</md-table-cell>
-        <md-table-cell md-label="Deatils"><v-btn class="primary" :href=" '/team/detail/' + item.teamId " > More details </v-btn></md-table-cell>
+        <md-table-cell md-label="Deatils"><v-btn class="primary" :href=" '/team/detail/' + item._id " > More details </v-btn></md-table-cell>
       </md-table-row>
 
     </md-table>
@@ -50,14 +49,15 @@
 
 <script>
 import  axios from 'axios';
+import url from '../../url';
 export default {
 
 
 mounted() {
- axios.get('https://api.audify.live/team/viewall')
+ axios.get(url.url+'/team/viewAll')
 .then((response)=>{
-this.items=response.data.data;
- this.users=response.data.data;
+  console.log(response);
+this.users=response.data.data;
 })
 .catch((error) =>{
   console.log(error);
@@ -66,7 +66,7 @@ this.items=response.data.data;
 
  data() {
   return {
-items:'',
+
 users:''
   }
 },
