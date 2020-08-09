@@ -121,7 +121,7 @@ export default {
           joinDate: this.joinDate,
         })
         .then((response) => {
-          this.$router.push({ path: '/audify/employee' });
+          this.$router.push({ path: '/employee' });
         })
         .catch((err) => {
           console.log(err);
@@ -133,7 +133,7 @@ export default {
     axios
       .delete("https://api.audify.live/employee/delete/" + this.empId)
       .then((response) => {
-        this.$router.push({ path: `/audify/employee` });
+        this.$router.push({ path: `/employee` });
       })
       .catch((err) => {
         console.log(err);

@@ -127,7 +127,7 @@ export default {
           project:this.project,
           employee:this.employees
       }).then((response)=>{
-          this.$router.push({ path: `/audify/team` });
+          this.$router.push({ path: `/team` });
       }).catch((err)=>{
         console.log(err);
       })

@@ -1,13 +1,13 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
-import Dashboard from "@/pages/Dashboard.vue";
-import UserProfile from "@/pages/UserProfile.vue";
-import TableList from "@/pages/TableList.vue";
-import Typography from "@/pages/Typography.vue";
-import Icons from "@/pages/Icons.vue";
-import Maps from "@/pages/Maps.vue";
-import Notifications from "@/pages/Notifications.vue";
-import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
+// import Dashboard from "@/pages/Dashboard.vue";
+// import UserProfile from "@/pages/UserProfile.vue";
+// import TableList from "@/pages/TableList.vue";
+// import Typography from "@/pages/Typography.vue";
+// import Icons from "@/pages/Icons.vue";
+// import Maps from "@/pages/Maps.vue";
+// import Notifications from "@/pages/Notifications.vue";
+// import UpgradeToPRO from "@/pages/UpgradeToPRO.vue";
 
 import index from "@/views/index.vue";
 
@@ -21,92 +21,47 @@ import employee from "@/views/employee/employee.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/login",
     component: index,
-
   },
   {
-    path: "/audify",
+    path: "/",
     component: DashboardLayout,
-    redirect: "/audify/dashboard",
+
     children: [
       {
-        path: "dashboard",
-        name: "Dashboard",
-        component: Dashboard,
-      },
-      {
-        path: "user",
-        name: "User Profile",
-        component: UserProfile,
-      },
-      {
-        path: "table",
-        name: "Table List",
-        component: TableList,
-      },
-      {
-        path: "typography",
-        name: "Typography",
-        component: Typography,
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: Icons,
-      },
-      {
-        path: "maps",
-        name: "Maps",
-        meta: {
-          hideFooter: true,
-        },
-        component: Maps,
-      },
-      {
-        path: "notifications",
-        name: "Notifications",
-        component: Notifications,
-      },
-      {
-        path: "upgrade",
-        name: "Upgrade to PRO",
-        component: UpgradeToPRO,
-      },
-       {
-        path: "/audify/team",
+        path: "/team",
         name: "Teams",
         component: teams,
       },
       {
-        path: "/audify/team/detail/:teamId",
+        path: "/team/detail/:teamId",
         name: "Team Details",
         component: team,
       },
       {
-        path: "/audify/team/add",
+        path: "/team/add",
         name: "Add Team",
         component: teamAdd,
       },
       ,
       {
-        path: "/audify/employee",
+        path: "/employee",
         name: "All Employees",
         component: employees,
       },
       {
-        path: "/audify/employee/add",
+        path: "/employee/add",
         name: "Add Employee",
         component: employeeAdd,
       },
       {
-        path: "/audify/employee/detail/:empId",
+        path: "/employee/detail/:empId",
         name: "Employee Details",
         component: employee,
       },
     ],
   },
-
 ];
 
 export default routes;

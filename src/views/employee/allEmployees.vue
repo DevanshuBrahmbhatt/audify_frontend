@@ -9,7 +9,7 @@
             <v-row>
               <v-col lg="12">
                 <h3>Employee Dashboard</h3>
-                <v-btn class="success" :href="'/audify/employee/add'"
+                <v-btn class="success" :href="'/employee/add'"
                   >Add item</v-btn
                 >
               </v-col>
@@ -29,7 +29,7 @@
                     >
                       <md-table-row slot="md-table-row" slot-scope="{ item }">
                         <md-table-cell md-label="Emp ID">{{
-                          item.empId
+                          item._id
                         }}</md-table-cell>
                         <md-table-cell md-label="Emp Name">{{
                           item.firstName
@@ -43,7 +43,7 @@
                         <md-table-cell md-label="Deatils"
                           ><v-btn
                             class="primary"
-                            :href="'/audify/employee/detail/' + item.empId"
+                            :href="'/employee/detail/' + item._id"
                           >
                             More details
                           </v-btn></md-table-cell

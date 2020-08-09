@@ -54,10 +54,10 @@ export default {
       console.log(this.password + "" + this.username);
 
       if (this.username === "user" && this.password === "user") {
-        this.$router.push({ path: `/audify` });
+        this.$router.push({ path: `/employee` });
       } else {
         alert("Wrong Password");
-        this.$router.push({ path: `/` });
+        this.$router.push({ path: `/login` });
       }
     },
   },

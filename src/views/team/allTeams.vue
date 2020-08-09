@@ -12,7 +12,7 @@
 
         >
       <h3>Team Dashboard</h3>
-      <v-btn class="success" :href=" '/audify/team/add' ">Add item</v-btn>
+      <v-btn class="success" :href=" '/team/add' ">Add item</v-btn>
         </v-col>
       </v-row>
 
@@ -31,7 +31,7 @@
         <md-table-cell md-label="Team ID">{{ item.teamId }}</md-table-cell>
         <md-table-cell md-label="Team Name">{{ item.name }}</md-table-cell>
         <md-table-cell md-label="Manager Name">{{ item.manager }}</md-table-cell>
-        <md-table-cell md-label="Deatils"><v-btn class="primary" :href=" '/audify/team/detail/' + item.teamId " > More details </v-btn></md-table-cell>
+        <md-table-cell md-label="Deatils"><v-btn class="primary" :href=" '/team/detail/' + item.teamId " > More details </v-btn></md-table-cell>
       </md-table-row>
 
     </md-table>

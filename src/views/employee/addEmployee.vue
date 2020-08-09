@@ -92,7 +92,7 @@ export default {
         })
         .then((response) => {
 
-          this.$router.push({ path: `/audify/employee` });
+          this.$router.push({ path: `/employee` });
         })
         .catch((err) => {
           console.log(err);

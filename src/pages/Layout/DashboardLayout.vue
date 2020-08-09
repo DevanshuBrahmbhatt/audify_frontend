@@ -7,18 +7,20 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/audify/dashboard">
-        <md-icon>dashboard</md-icon>
-        <p>Dashboard</p>
-      </sidebar-link>
-      <sidebar-link to="/audify/team">
+            <sidebar-link to="/team">
         <md-icon>people</md-icon>
         <p>Team Managment</p>
       </sidebar-link>
-      <sidebar-link to="/audify/employee">
+      <sidebar-link to="/employee">
         <md-icon>person</md-icon>
         <p>Employee Managment</p>
       </sidebar-link>
+
+      <!--<sidebar-link to="/audify/dashboard">
+        <md-icon>dashboard</md-icon>
+        <p>Dashboard</p>
+      </sidebar-link>
+
       <sidebar-link to="/audify/user">
         <md-icon>person</md-icon>
         <p>User Profile</p>
@@ -46,7 +48,7 @@
       <sidebar-link to="/audify/upgrade" class="active-pro">
         <md-icon>unarchive</md-icon>
         <p>Upgrade to PRO</p>
-      </sidebar-link>
+      </sidebar-link>-->
     </side-bar>
 
     <div class="main-panel">
