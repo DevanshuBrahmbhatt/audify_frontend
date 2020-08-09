@@ -121,15 +121,13 @@ export default {
           joinDate: this.joinDate,
         })
         .then((response) => {
-          this.$router.push({ path: `/audify/employee` });
+          this.$router.push({ path: '/audify/employee' });
         })
         .catch((err) => {
           console.log(err);
         });
     },
-  },
-
-  deleteEmp: function() {
+    deleteEmp: function() {
     alert("click delete");
     console.log("delete");
     axios
@@ -141,6 +139,9 @@ export default {
         console.log(err);
       });
   },
+  },
+
+  
 };
 </script>
 <style></style>
