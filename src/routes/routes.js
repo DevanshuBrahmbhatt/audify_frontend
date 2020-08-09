@@ -17,8 +17,13 @@ import employee from "@/views/employee/viewEmployee.vue";
 const routes = [
   {
     path: "/",
+    component: index,
+
+  },
+  {
+    path: "/audify",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/audify/dashboard",
     children: [
       {
         path: "dashboard",
@@ -63,12 +68,7 @@ const routes = [
         name: "Upgrade to PRO",
         component: UpgradeToPRO,
       },
-      {
-        path: "/audify",
-        name: "audify",
-        component: index,
-      },
-      {
+       {
         path: "/audify/team",
         name: "team",
         component: team,

@@ -54,8 +54,9 @@ export default {
       console.log(this.password + "" + this.username);
 
       if (this.username === "user" && this.password === "user") {
-        this.$router.push({ path: `/audify/team` });
+        this.$router.push({ path: `/audify` });
       } else {
+        alert("Wrong Password");
         this.$router.push({ path: `/` });
       }
     },

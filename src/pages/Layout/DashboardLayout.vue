@@ -7,7 +7,7 @@
       :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/dashboard">
+      <sidebar-link to="/audify/dashboard">
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
       </sidebar-link>
@@ -19,23 +19,23 @@
         <md-icon>person</md-icon>
         <p>Employee Managment</p>
       </sidebar-link>
-      <sidebar-link to="/user">
+      <sidebar-link to="/audify/user">
         <md-icon>person</md-icon>
         <p>User Profile</p>
       </sidebar-link>
-      <sidebar-link to="/table">
+      <sidebar-link to="/audify/table">
         <md-icon>content_paste</md-icon>
         <p>Table list</p>
       </sidebar-link>
-      <sidebar-link to="/typography">
+      <sidebar-link to="/audify/typography">
         <md-icon>library_books</md-icon>
         <p>Typography</p>
       </sidebar-link>
-      <sidebar-link to="/icons">
+      <sidebar-link to="/audify/icons">
         <md-icon>bubble_chart</md-icon>
         <p>Icons</p>
       </sidebar-link>
-      <sidebar-link to="/maps">
+      <sidebar-link to="/audify/maps">
         <md-icon>location_on</md-icon>
         <p>Maps</p>
       </sidebar-link>
@@ -43,7 +43,7 @@
         <md-icon>notifications</md-icon>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/upgrade" class="active-pro">
+      <sidebar-link to="/audify/upgrade" class="active-pro">
         <md-icon>unarchive</md-icon>
         <p>Upgrade to PRO</p>
       </sidebar-link>
