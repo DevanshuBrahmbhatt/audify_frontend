@@ -40,6 +40,18 @@
                   <md-input v-model="mobileNo" type="number"></md-input>
                 </md-field>
               </div>
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Email</label>
+                  <md-input v-model="email" type="email"></md-input>
+                </md-field>
+              </div>
+              <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Password</label>
+                  <md-input v-model="password" type="password"></md-input>
+                </md-field>
+              </div>
 
               <div class="md-layout-item md-small-size-100 md-size-100">
                 <md-button style="cursor:pointer;" v-on:click="submit"
@@ -73,12 +85,14 @@ export default {
   mounted() {
     const empId = this.$route.params.empId;
     axios
-      .get(url.url+"/employee/view/" + empId)
+      .get(url.url + "/employee/view/" + empId)
       .then((response) => {
         (this.fname = response.data.data[0].firstName),
           (this.lname = response.data.data[0].lastName),
           (this.role = response.data.data[0].role),
           (this.joinDate = response.data.data[0].joinDate),
+          (this.email = response.data.data[0].email),
+          (this.password = response.data.data[0].password),
           (this.mobileNo = response.data.data[0].mobileNo);
       })
       .catch((err) => {
@@ -100,20 +114,23 @@ export default {
       role: "",
       joinDate: "",
       mobileNo: "",
-      empId: "",
+      email: "",
+      password: "",
     };
   },
   methods: {
     submit: function() {
-          const empId = this.$route.params.empId;
+      const empId = this.$route.params.empId;
       alert("click submit");
       axios
-        .put(url.url+"/employee/update/" + empId, {
+        .put(url.url + "/employee/update/" + empId, {
           firstName: this.fname,
           lastName: this.lname,
           role: this.role,
           mobileNo: this.mobileNo,
           joinDate: this.joinDate,
+          email: this.email,
+          password: this.password,
         })
         .then((response) => {
           this.$router.push({ path: "/employee" });
@@ -123,9 +140,9 @@ export default {
         });
     },
     deleteEmp: function() {
-   const empId = this.$route.params.empId;
+      const empId = this.$route.params.empId;
       axios
-        .delete(url.url+"/employee/delete/" + empId)
+        .delete(url.url + "/employee/delete/" + empId)
         .then((response) => {
           this.$router.push({ path: `/employee` });
         })

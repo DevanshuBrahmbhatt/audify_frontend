@@ -40,6 +40,18 @@
                   <md-input v-model="mobileNo" type="number"></md-input>
                 </md-field>
               </div>
+               <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Email</label>
+                  <md-input v-model="email" type="email"></md-input>
+                </md-field>
+              </div>
+               <div class="md-layout-item md-small-size-100 md-size-50">
+                <md-field>
+                  <label>Password</label>
+                  <md-input v-model="password" type="password"></md-input>
+                </md-field>
+              </div>
 
               <div class="md-layout-item md-small-size-100 md-size-100">
                 <md-button style="cursor:pointer;" v-on:click="submit"
@@ -71,6 +83,8 @@ export default {
       role: "",
       joinDate: "",
       mobileNo: "",
+      email:"",
+      password:"",
     };
   },
   methods: {
@@ -82,6 +96,8 @@ export default {
           role: this.role,
           mobileNo: this.mobileNo,
           joinDate: this.joinDate,
+          email:this.email,
+          password:this.password
         })
         .then((response) => {
 
