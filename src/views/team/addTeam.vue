@@ -29,7 +29,7 @@
                 </md-field>
               </div>
 
-          <md-card-header :data-background-color="dataBackgroundColor" class="mt-5">
+              <!-- <md-card-header :data-background-color="dataBackgroundColor" class="mt-5">
               <div class="md-layout-item md-small-size-100 md-size-100">
                 <v-row>
                   <div class="title">
@@ -43,8 +43,8 @@
                </v-row>
               </div>
 
-          </md-card-header>
-
+          </md-card-header> -->
+              <!-- 
               <div class="md-layout-item md-small-size-100 md-size-100">
 
                 <v-col v-for="(employee, i) in employees" :key="i">
@@ -73,9 +73,25 @@
                     <md-input v-model="employee.employee" type="text"></md-input>
                   </md-field>
                 </v-col>
+              </div> -->
+
+              <div class="md-layout-item md-small-size-100 md-size-100">
+                <v-col v-for="(employee, i) in employees" :key="i">
+                  <v-select
+                    v-model="employee.employee"
+                    :items="items"
+                    item-text="firstName"
+                    item-value="_id"
+                    attach
+                    chips
+                    label="Select Employee"
+                    multiple
+                    outlined
+                  ></v-select>
+                </v-col>
               </div>
               <div class="md-layout-item md-small-size-100 md-size-100">
-                <md-button   style="cursor:pointer;"  v-on:click="submit"
+                <md-button style="cursor:pointer;" v-on:click="submit"
                   >Upload Details</md-button
                 >
               </div>
@@ -87,9 +103,22 @@
   </v-app>
 </template>
 <script>
-import axios from 'axios';
-import url from '../../url';
+import axios from "axios";
+import url from "../../url";
 export default {
+  mounted() {
+    axios
+      .get(url.url + "/employee/viewAll")
+      .then((response) => {
+        console.log(response.data.data);
+        // this.value=response.data.data;
+        this.items = response.data.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+
   name: "edit-profile-form",
   props: {
     dataBackgroundColor: {
@@ -99,6 +128,8 @@ export default {
   },
   data() {
     return {
+      value: "",
+      items: "",
       manager: "",
       name: "",
       project: "",
@@ -110,32 +141,21 @@ export default {
     };
   },
   methods: {
-
-
     submit: function() {
-
-      axios.post(url.url+'/team/create',{
-          name:this.name,
-          manager:this.manager,
-          project:this.project,
-          employee:this.employees
-      }).then((response)=>{
+      axios
+        .post(url.url + "/team/create", {
+          name: this.name,
+          manager: this.manager,
+          project: this.project,
+          employee: this.employees,
+        })
+        .then((response) => {
           this.$router.push({ path: `/team` });
-      }).catch((err)=>{
-        console.log(err);
-      })
-  },
-
-
-    addNewEmployee() {
-      this.employees.push({
-        employee: "",
-      });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-    deleteEmployee(i){
-      this.employees.splice(i,1);
-
-    }
   },
 };
 </script>

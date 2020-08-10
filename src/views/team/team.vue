@@ -28,7 +28,7 @@
                   <md-input v-model="project" type="text"></md-input>
                 </md-field>
               </div>
-
+              <!-- 
               <md-card-header
                 :data-background-color="dataBackgroundColor"
                 class="mt-5"
@@ -46,9 +46,9 @@
                     </v-btn>
                   </v-row>
                 </div>
-              </md-card-header>
+              </md-card-header> -->
 
-              <div class="md-layout-item md-small-size-100 md-size-100">
+              <!-- <div class="md-layout-item md-small-size-100 md-size-100">
                 <v-col v-for="(emp, i) in employees" :key="i">
                   <v-row>
                     <v-col lg="6" md="6" sm="6">
@@ -71,6 +71,22 @@
                     <label>Add Employee Name</label>
                     <md-input v-model="emp.employee" type="text"></md-input>
                   </md-field>
+                </v-col>
+              </div> -->
+
+              <div class="md-layout-item md-small-size-100 md-size-100">
+                <v-col v-for="(employee, i) in employees" :key="i">
+                  <v-select
+                    v-model="employee.employee"
+                    :items="items"
+                    item-text="firstName"
+                    item-value="_id"
+                    attach
+                    chips
+                    label="Select Employee"
+                    multiple
+                    outlined
+                  ></v-select>
                 </v-col>
               </div>
               <div class="md-layout-item md-small-size-100 md-size-100">
@@ -104,8 +120,9 @@ import url from "../../url";
 export default {
   mounted() {
     const teamId = this.$route.params.teamId;
+
     axios
-      .get(url.url+"/team/view/" + teamId)
+      .get(url.url + "/team/view/" + teamId)
       .then((response) => {
         (this.manager = response.data.data[0].manager),
           (this.name = response.data.data[0].name),
@@ -115,6 +132,18 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+
+ axios
+      .get(url.url + "/employee/viewAll")
+      .then((response) => {
+        console.log(response.data.data);
+        // this.value=response.data.data;
+        this.items = response.data.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      
   },
 
   name: "edit-profile-form",
@@ -127,6 +156,7 @@ export default {
   data() {
     return {
       manager: "",
+      items: "",
       teamId: "",
       name: "",
       project: "",
@@ -139,9 +169,9 @@ export default {
   },
   methods: {
     submit: function() {
-          const teamId = this.$route.params.teamId;
+      const teamId = this.$route.params.teamId;
       axios
-        .put(url.url+"/team/update/" + teamId, {
+        .put(url.url + "/team/update/" + teamId, {
           name: this.name,
           manager: this.manager,
           project: this.project,
@@ -156,24 +186,15 @@ export default {
     },
 
     deleteTeam: function() {
-                const teamId = this.$route.params.teamId;
+      const teamId = this.$route.params.teamId;
       axios
-        .delete(url.url+"/team/delete/" + teamId)
+        .delete(url.url + "/team/delete/" + teamId)
         .then((response) => {
           this.$router.push({ path: `/team` });
         })
         .catch((err) => {
           console.log(err);
         });
-    },
-
-    addNewEmployee() {
-      this.employees.push({
-        employee: "",
-      });
-    },
-    deleteEmployee(i) {
-      this.employees.splice(i, 1);
     },
   },
 };
