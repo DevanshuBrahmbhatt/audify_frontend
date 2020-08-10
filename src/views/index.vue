@@ -13,7 +13,6 @@
         foundation in truth And I love you like Kanye loves Kanye I love Rick
         Owens’ bed design but the back is...
       </p>
-      <md-button class="md-round md-success" to="/ceoLogin">Login CEO</md-button>
             <md-button class="md-round md-success" to="/employeeLogin">Login Employee</md-button>
     </md-card-content>
    </md-card>

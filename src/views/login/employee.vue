@@ -59,7 +59,13 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          this.$router.push({ path: `/employee` });
+          if (response.data.flag == 0) {
+            this.$router.push({ path: `/employee` });
+            //Employee Route
+          } else {
+            this.$router.push({ path: `/team` });
+            //CEO Route
+          }
         })
         .catch((err) => {
           console.log(err);

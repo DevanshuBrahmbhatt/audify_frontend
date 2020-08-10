@@ -19,7 +19,6 @@ import employees from "@/views/employee/allEmployees.vue";
 import employeeAdd from "@/views/employee/addEmployee.vue";
 import employee from "@/views/employee/employee.vue";
 
-import ceoLogin from "@/views/login/ceo.vue";
 import employeeLogin from "@/views/login/employee.vue";
 const routes = [
   // {
@@ -36,12 +35,6 @@ const routes = [
         path: "/welcome",
         name: "index",
         component: index,
-      },
-
-      {
-        path: "/ceoLogin",
-        name: "CEO Login",
-        component: ceoLogin,
       },
 
       {
