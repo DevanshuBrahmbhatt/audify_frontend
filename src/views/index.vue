@@ -1,66 +1,36 @@
-<template>
-  <v-app>
-    <v-container>
-      <form>
-        <md-card>
-          <md-card-header :data-background-color="dataBackgroundColor">
-            <h4 class="title">Welcome CEO</h4>
-            <p class="category">Enter Your Detalis Here</p>
-          </md-card-header>
+ <template>
+ <v-container>
+   <md-card class="md-card-profile">
+    <div class="md-card-avatar">
+      <img class="img" :src="cardUserImage" />
+    </div>
 
-          <md-card-content>
-            <div class="md-layout">
-              <div class="md-layout-item md-small-size-100 md-size-33">
-                <md-field>
-                  <label>User Name</label>
-                  <md-input v-model="username" type="text"></md-input>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100 md-size-33">
-                <md-field>
-                  <label>Password</label>
-                  <md-input v-model="password" type="password"></md-input>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100 md-size-33">
-                <md-button class="md-primary" v-on:click="submit"
-                  >Login</md-button
-                >
-              </div>
-            </div>
-          </md-card-content>
-        </md-card>
-      </form>
-    </v-container>
-  </v-app>
+    <md-card-content>
+      <h6 class="category text-gray">CEO / Co-Founder</h6>
+      <h4 class="card-title">Alec Thompson</h4>
+      <p class="card-description">
+        Don't be scared of the truth because we need to restart the human
+        foundation in truth And I love you like Kanye loves Kanye I love Rick
+        Owens’ bed design but the back is...
+      </p>
+      <md-button class="md-round md-success" to="/ceoLogin">Login CEO</md-button>
+            <md-button class="md-round md-success" to="/employeeLogin">Login Employee</md-button>
+    </md-card-content>
+   </md-card>
+   </v-container>
 </template>
 <script>
 export default {
-  name: "edit-profile-form",
+  name: "user-card",
   props: {
-    dataBackgroundColor: {
+    cardUserImage: {
       type: String,
-      default: "",
-    },
+      default: require("@/assets/img/faces/marc.jpg")
+    }
   },
   data() {
-    return {
-      username: null,
-      password: null,
-    };
-  },
-  methods: {
-    submit: function() {
-      console.log(this.password + "" + this.username);
-
-      if (this.username === "user" && this.password === "user") {
-        this.$router.push({ path: `/employee` });
-      } else {
-        alert("Wrong Password");
-        this.$router.push({ path: `/login` });
-      }
-    },
-  },
+    return {};
+  }
 };
 </script>
 <style></style>

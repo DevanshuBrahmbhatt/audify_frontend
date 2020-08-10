@@ -19,16 +19,36 @@ import employees from "@/views/employee/allEmployees.vue";
 import employeeAdd from "@/views/employee/addEmployee.vue";
 import employee from "@/views/employee/employee.vue";
 
+import ceoLogin from "@/views/login/ceo.vue";
+import employeeLogin from "@/views/login/employee.vue";
 const routes = [
-  {
-    path: "/login",
-    component: index,
-  },
+  // {
+  //   path: "/",
+  //   component: index,
+  // },
   {
     path: "/",
     component: DashboardLayout,
+    redirect: "/welcome",
 
     children: [
+      {
+        path: "/welcome",
+        name: "index",
+        component: index,
+      },
+
+      {
+        path: "/ceoLogin",
+        name: "CEO Login",
+        component: ceoLogin,
+      },
+
+      {
+        path: "/employeeLogin",
+        name: "Employee Login",
+        component: employeeLogin,
+      },
       {
         path: "/team",
         name: "Teams",
