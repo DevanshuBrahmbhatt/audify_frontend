@@ -9,7 +9,9 @@
             <v-row>
               <v-col lg="12">
                 <h3>Employee Dashboard</h3>
-                <v-btn class="success" :href="'/employee/add'">Add New Employee</v-btn>
+                <v-btn class="success" :href="'/employee/add'"
+                  >Add New Employee</v-btn
+                >
               </v-col>
             </v-row>
 
@@ -43,6 +45,15 @@
                             More details
                           </v-btn></md-table-cell
                         >
+                        <md-table-cell md-label="Status"
+                          ><v-btn class="red white--text" v-if="!item.status">
+                            Unavailable
+                          </v-btn>
+                          <v-btn class="primary" v-else>
+                           {{item.status}}
+                          </v-btn>
+                          </md-table-cell
+                        >
                       </md-table-row>
                     </md-table>
                   </md-card-content>
@@ -62,7 +73,7 @@ import url from "../../url";
 export default {
   mounted() {
     axios
-      .get(url.url+"/employee/viewall")
+      .get(url.url + "/employee/viewall")
       .then((response) => {
         this.users = response.data.data;
       })
