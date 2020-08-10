@@ -133,7 +133,7 @@ export default {
         console.log(err);
       });
 
- axios
+    axios
       .get(url.url + "/employee/viewAll")
       .then((response) => {
         console.log(response.data.data);
@@ -143,7 +143,6 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-      
   },
 
   name: "edit-profile-form",
