@@ -48,32 +48,44 @@
               </drop-down>
             </md-list-item> -->
 
-            <li class="md-list-item">
-              <a
-                href="#/notifications"
-                class="md-list-item-router md-list-item-container md-button-clean dropdown"
-              >
-                <div class="md-list-item-content">
-                  <drop-down>
-                    <md-button
-                      slot="title"
-                      class="md-button md-just-icon md-simple"
-                      data-toggle="dropdown"
+            <li class="md-list-item" @click="Notifications()">
+              <div class="md-list-item-content">
+                <drop-down>
+                  <md-button
+                    slot="title"
+                    class="md-button md-just-icon md-simple"
+                    data-toggle="dropdown"
+                  >
+                    <md-icon>notifications</md-icon>
+                    <span class="notification">5</span>
+                    <p class="hidden-lg hidden-md">Notifications</p>
+                  </md-button>
+
+                  <ul
+
+                    class="dropdown-menu dropdown-menu-right"
+                  >
+                    <li
+                                        v-for="(notification, i) in notifications"
+                    :key="i"
                     >
-                      <md-icon>notifications</md-icon>
-                      <span class="notification">5</span>
-                      <p class="hidden-lg hidden-md">Notifications</p>
-                    </md-button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                      <li><a href="#">Mike John responded to your email</a></li>
-                      <li><a href="#">You have 5 new tasks</a></li>
-                      <li><a href="#">You're now friend with Andrew</a></li>
-                      <li><a href="#">Another Notification</a></li>
-                      <li><a href="#">Another One</a></li>
-                    </ul>
-                  </drop-down>
-                </div>
-              </a>
+                      <!-- <li > -->
+                      {{ notification.notification }}
+                      <v-btn
+                        type="button"
+                        aria-hidden="true"
+                        class=" red"
+                        v-model="notifications"
+                        @click="deleteNotifications(notification.id)"
+                      >
+                        <i data-notify="icon" class="material-icons white--text"
+                          >cancel</i
+                        >
+                      </v-btn>
+                    </li>
+                  </ul>
+                </drop-down>
+              </div>
             </li>
 
             <md-list-item href="#/user">
@@ -88,10 +100,24 @@
 </template>
 
 <script>
+import axios from "axios";
+import url from "../../url";
 export default {
+  mounted() {
+    // axios
+    //   .get("http://localhost:5001/employee/getNotifications?email=devanshu.vguj@gmail.com")
+    //   .then((response) => {
+    //     console.log("not"+response);
+    //     this.notificatios = response.data.data; //In this response i will have id. which i need to pass in delete function
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  },
   data() {
     return {
       selectedEmployee: null,
+      notifications: [],
       employees: [
         "Jim Halpert",
         "Dwight Schrute",
@@ -100,15 +126,37 @@ export default {
         "Angela Martin",
         "Kelly Kapoor",
         "Ryan Howard",
-        "Kevin Malone"
-      ]
+        "Kevin Malone",
+      ],
     };
   },
   methods: {
     toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
-    }
-  }
+    },
+    deleteNotifications(id) {
+      axios
+        .delete(url.url + "/employee/deleteNotifications/" + id)
+        .then((response) => {
+          console.log(response);
+          this.$router.push({ path: `/employee` });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    Notifications() {
+      axios
+        .get(url.url + "/employee/getNotifications/")
+        .then((response) => {
+          this.notifications = response.data.data;
+          console.log(response.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
 };
 </script>
 

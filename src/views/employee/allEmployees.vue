@@ -52,19 +52,6 @@
                           <v-btn class="primary" v-else>
                             {{ item.status }}
                           </v-btn>
-
-                          <v-btn v-model="notifications">
-                            <button
-                              type="button"
-                              aria-hidden="true"
-                              class="close"
-                              @click="deleteNotifications(item.email)"
-                            >
-                              <i data-notify="icon" class="material-icons"
-                                >add_alert</i
-                              >
-                            </button>
-                          </v-btn>
                         </md-table-cell>
                       </md-table-row>
                     </md-table>
@@ -87,17 +74,7 @@ export default {
     axios
       .get(url.url + "/employee/viewall")
       .then((response) => {
-        console.log(response);
         this.users = response.data.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .get(url.url + "/employee/getNotifications/" + this.users.email)
-      .then((response1) => {
-        console.log("response1" + response1);
-        this.notificatios = response1.data.data;
       })
       .catch((error) => {
         console.log(error);
@@ -107,22 +84,7 @@ export default {
   data() {
     return {
       users: "",
-      notificatios: "",
     };
-  },
-  methods: {
-    deleteNotifications(id) {
-      axios
-        .delete(url.url + "/deleteNotifications/" + id)
-
-        .then((response) => {
-          console.log(response);
-          this.$router.push({ path: `/employee` });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
 };
 </script>
