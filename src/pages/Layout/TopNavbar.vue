@@ -62,26 +62,30 @@
                   </md-button>
 
                   <ul
-
                     class="dropdown-menu dropdown-menu-right"
+                    style="width:350px !important;"
                   >
-                    <li
-                                        v-for="(notification, i) in notifications"
-                    :key="i"
-                    >
-                      <!-- <li > -->
-                      {{ notification.notification }}
-                      <v-btn
-                        type="button"
-                        aria-hidden="true"
-                        class=" red"
-                        v-model="notifications"
-                        @click="deleteNotifications(notification.id)"
-                      >
-                        <i data-notify="icon" class="material-icons white--text"
-                          >cancel</i
-                        >
-                      </v-btn>
+                    <li v-for="(notification, i) in notifications" :key="i">
+                      <v-row>
+                        <v-col lg="8">
+                          {{ notification.notification }}
+                        </v-col>
+                        <v-col lg="4">
+                          <v-btn
+                            type="button"
+                            aria-hidden="true"
+                            class=" red"
+                            v-model="notifications"
+                            @click="deleteNotifications(notification.id)"
+                          >
+                            <i
+                              data-notify="icon"
+                              class="material-icons white--text"
+                              >cancel</i
+                            >
+                          </v-btn>
+                        </v-col>
+                      </v-row>
                     </li>
                   </ul>
                 </drop-down>
@@ -104,11 +108,12 @@ import axios from "axios";
 import url from "../../url";
 export default {
   mounted() {
+    // const email = this.$route.params.email;
     // axios
-    //   .get("http://localhost:5001/employee/getNotifications?email=devanshu.vguj@gmail.com")
+    //   .get(url.url + "/employee/getNotifications?email=" + email)
     //   .then((response) => {
-    //     console.log("not"+response);
-    //     this.notificatios = response.data.data; //In this response i will have id. which i need to pass in delete function
+    //     console.log("not" + response);
+    //     this.notifications = response.data.data;
     //   })
     //   .catch((error) => {
     //     console.log(error);
