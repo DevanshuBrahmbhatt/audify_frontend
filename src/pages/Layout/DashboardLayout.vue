@@ -15,6 +15,10 @@
         <md-icon>person</md-icon>
         <p>Employee Managment</p>
       </sidebar-link>
+       <sidebar-link to="/task">
+        <md-icon>work</md-icon>
+        <p>Assigned Task</p>
+      </sidebar-link>
 
       <!--<sidebar-link to="/audify/dashboard">
         <md-icon>dashboard</md-icon>

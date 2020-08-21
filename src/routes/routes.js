@@ -18,6 +18,7 @@ import teamAdd from "@/views/team/addTeam.vue";
 import employees from "@/views/employee/allEmployees.vue";
 import employeeAdd from "@/views/employee/addEmployee.vue";
 import employee from "@/views/employee/employee.vue";
+import alltask from "@/views/task/alltask.vue";
 
 import employeeLogin from "@/views/login/employee.vue";
 const routes = [
@@ -72,6 +73,11 @@ const routes = [
         path: "/employee/detail/:empId",
         name: "Employee Details",
         component: employee,
+      },
+      {
+        path: "/task",
+        name: "All Assigned Tasks",
+        component: alltask,
       },
     ],
   },
