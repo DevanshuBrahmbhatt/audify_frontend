@@ -27,17 +27,16 @@ const routes = [
   //   component: index,
   // },
   {
+    path: "/welcome",
+    name: "index",
+    component: index,
+  },
+  {
     path: "/",
     component: DashboardLayout,
     redirect: "/welcome",
 
     children: [
-      {
-        path: "/welcome",
-        name: "index",
-        component: index,
-      },
-
       {
         path: "/employeeLogin",
         name: "Employee Login",

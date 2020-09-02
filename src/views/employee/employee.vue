@@ -37,7 +37,7 @@
               <div class="md-layout-item md-small-size-100 md-size-50">
                 <md-field>
                   <label>Mobile No</label>
-                  <md-input v-model="mobileNo" type="number"></md-input>
+                  <md-input v-model="mobileNo" type="text"></md-input>
                 </md-field>
               </div>
               <div class="md-layout-item md-small-size-100 md-size-50">
@@ -121,7 +121,7 @@ export default {
   methods: {
     submit: function() {
       const empId = this.$route.params.empId;
-      alert("click submit");
+
       axios
         .put(url.url + "/employee/update/" + empId, {
           firstName: this.fname,
