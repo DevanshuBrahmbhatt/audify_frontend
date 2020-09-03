@@ -46,6 +46,8 @@
   </v-container>
 </template>
 <script>
+import axios from "axios";
+import url from "../url";
 export default {
   name: "user-card",
   props: {
@@ -54,8 +56,32 @@ export default {
       default: require("@/assets/img/audify.png"),
     },
   },
-  data() {
-    return {};
+ data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    submit: function() {
+      axios
+        .post(url.url + "/employee/login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          if (response.data.flag == 0) {
+            this.$router.push({ path: `/employee` });
+            //Employee Route
+          } else {
+            this.$router.push({ path: `/team` });
+            //CEO Route
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
