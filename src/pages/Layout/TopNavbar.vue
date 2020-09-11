@@ -107,18 +107,7 @@
 import axios from "axios";
 import url from "../../url";
 export default {
-  mounted() {
-    // const email = this.$route.params.email;
-    // axios
-    //   .get(url.url + "/employee/getNotifications?email=" + email)
-    //   .then((response) => {
-    //     console.log("not" + response);
-    //     this.notifications = response.data.data;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-  },
+
   data() {
     return {
       selectedEmployee: null,
@@ -151,15 +140,16 @@ export default {
         });
     },
     Notifications() {
-      axios
-        .get(url.url + "/employee/getNotifications/")
-        .then((response) => {
-          this.notifications = response.data.data;
-          console.log(response.data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+     const email = this.$route.params.email;
+    axios
+      .get(url.url + "/employee/getNotifications?email=" + email)
+      .then((response) => {
+        console.log("not" + response);
+        this.notifications = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     },
   },
 };

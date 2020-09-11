@@ -19,7 +19,10 @@
         <md-icon>work</md-icon>
         <p>Assigned Task</p>
       </sidebar-link>
-
+       <sidebar-link to="/client">
+        <md-icon>people</md-icon>
+        <p>Client Managment</p>
+      </sidebar-link>
       <!--<sidebar-link to="/audify/dashboard">
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>

@@ -1,4 +1,4 @@
 module.exports = {
-  url: "https://api.audify.live",
-  // url:'http://localhost:5001',
+  // url: "https://api.audify.live",
+  url:'http://localhost:5001',
 };

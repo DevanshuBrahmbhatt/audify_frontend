@@ -71,7 +71,7 @@ export default {
         })
         .then((response) => {
           if (response.data.flag == 0) {
-            this.$router.push({ path: `/employee` });
+            this.$router.push({ path: `/dashboard/employee/`+this.email });
             //Employee Route
           } else {
             this.$router.push({ path: `/team` });

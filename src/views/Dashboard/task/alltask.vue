@@ -63,7 +63,7 @@
 
 <script>
 import axios from "axios";
-import url from "../../url";
+import url from "../../../url";
 export default {
   mounted() {
     axios

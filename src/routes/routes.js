@@ -11,21 +11,24 @@ import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
 import index from "@/views/index.vue";
 
-import teams from "@/views/team/allTeams.vue";
-import team from "@/views/team/team.vue";
-import teamAdd from "@/views/team/addTeam.vue";
+import teams from "@/views/Dashboard/team/allTeams.vue";
+import team from "@/views/Dashboard/team/team.vue";
+import teamAdd from "@/views/Dashboard/team/addTeam.vue";
 
-import employees from "@/views/employee/allEmployees.vue";
-import employeeAdd from "@/views/employee/addEmployee.vue";
-import employee from "@/views/employee/employee.vue";
-import alltask from "@/views/task/alltask.vue";
+import clients from "@/views/Dashboard/client/allClients.vue";
+import client from "@/views/Dashboard/client/client.vue";
+import clientAdd from "@/views/Dashboard/client/addClient.vue";
 
-import employeeLogin from "@/views/login/employee.vue";
+
+
+import employees from "@/views/Dashboard/employee/allEmployees.vue";
+import employeeAdd from "@/views/Dashboard/employee/addEmployee.vue";
+import employee from "@/views/Dashboard/employee/employee.vue";
+import alltask from "@/views/Dashboard/task/alltask.vue";
+
+import employeeDash from "@/views/Employee/Layout.vue";
 const routes = [
-  // {
-  //   path: "/",
-  //   component: index,
-  // },
+
   {
     path: "/welcome",
     name: "index",
@@ -37,11 +40,7 @@ const routes = [
     redirect: "/welcome",
 
     children: [
-      {
-        path: "/employeeLogin",
-        name: "Employee Login",
-        component: employeeLogin,
-      },
+
       {
         path: "/team",
         name: "Teams",
@@ -57,7 +56,21 @@ const routes = [
         name: "Add Team",
         component: teamAdd,
       },
-      ,
+      {
+        path: "/client",
+        name: "Clients",
+        component: clients,
+      },
+      {
+        path: "/client/detail/:clientId",
+        name: "Client Details",
+        component: client,
+      },
+      {
+        path: "/client/add",
+        name: "Add Client",
+        component: clientAdd,
+      },
       {
         path: "/employee",
         name: "All Employees",
@@ -79,6 +92,11 @@ const routes = [
         component: alltask,
       },
     ],
+  },
+  {
+    path: "/dashboard/employee/:email",
+    name: "Welcome For Employee Only ",
+    component: employeeDash,
   },
 ];
 
