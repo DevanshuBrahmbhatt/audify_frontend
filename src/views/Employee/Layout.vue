@@ -12,8 +12,9 @@
             >
               <v-row>
                 <v-col lg="12">
+                  <!-- <div id="my-signin2" @click="renderButton()"></div> -->
                   <h3>Your Task Dashboard</h3>
-                  <v-btn @click="allowCalendar()">Allow Google Calender</v-btn>
+                  <v-btn id="my-signin2" @click="renderButton()">Allow Google Calender</v-btn>
                 </v-col>
               </v-row>
 
@@ -83,8 +84,18 @@ import MobileMenu from "@/pages/Layout/MobileMenu.vue";
 import FixedPlugin from "../../pages/Layout/Extra/FixedPlugin.vue";
 
 export default {
+  mataInfo() {
+    return {
+      name: "google-signin-client_id",
+      content:
+        "993657414746-0vio5lmpt74c05tk6og1qkfi73mrb2mv.apps.googleusercontent.com",
+    };
+  },
   mounted() {
     const email = this.$route.params.email;
+    axios.get("https://apis.google.com/js/platform.js?onload=renderButton");
+
+    // axios.get();
     axios
       .get(url.url + "/task/view/" + email)
       .then((response) => {
@@ -96,16 +107,55 @@ export default {
       });
   },
   methods: {
-    allowCalendar() {
-      const email = this.$route.params.email;
-      axios
-        .post(url.url + "/employee/allowAccess/" + email)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    // allowCalendar() {
+    //   const email = this.$route.params.email;
+    //   axios
+    //     .post(url.url + "/employee/saveTokens/", {
+    //         headers: {
+    //                 Accept: 'application/json',
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({
+    //                 'email': googleUser.getBasicProfile().getEmail(),
+    //                 'obj': googleUser.getAuthResponse(true)
+    //             })
+    //     })
+    //     .then((response) => {
+    //       console.log(response);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
+    async onSuccess(googleUser) {
+      const r = await fetch(url.url + `/employee/saveTokens`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: googleUser.getBasicProfile().getEmail(),
+          obj: googleUser.getAuthResponse(true),
+        }),
+      });
+    },
+
+    onFailure(error) {
+      console.log(error);
+    },
+
+    renderButton() {
+      gapi.signin2.render("my-signin2", {
+        scope: "profile email https://www.googleapis.com/auth/calendar",
+        width: 240,
+        height: 50,
+        longtitle: true,
+        theme: "dark",
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        responseType: "code",
+      });
     },
   },
   components: {

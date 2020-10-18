@@ -1,14 +1,14 @@
 <template>
   <v-container>
-    <md-card class="md-card-profile"
+    <md-card class="md-card-profile" style="background-color:#000080"
       ><br /><br /><br />
       <div class="md-card-avatar">
-        <img class="img" :src="cardImage" style="margin-left:30px !important" />
+        <img class="img" :src="cardImage" style="margin-left:30px !important; background-color:#000080" />
       </div>
 
       <md-card-content>
-        <h3 class="card-title">Welcome To Audify</h3>
-        <h4 class="card-description">
+        <h3 class="card-title" style="color:white !important">Welcome To Audify</h3>
+        <h4 class="card-description" style="color:white !important">
           Please, Login Via Company officals Email and Password for proceed
           further. You will be redirected according to your role.
         </h4>
