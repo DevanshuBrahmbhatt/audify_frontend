@@ -48,7 +48,7 @@
               </drop-down>
             </md-list-item> -->
 
-            <li class="md-list-item" @click="Notifications()">
+            <li class="md-list-item">
               <div class="md-list-item-content">
                 <drop-down>
                   <md-button
@@ -107,21 +107,22 @@
 import axios from "axios";
 import url from "../../url";
 export default {
+  mounted() {
+    const email = this.$route.params.email;
+    axios
+      .get(url.url + "/employee/getNotifications?email=" + email)
+      .then((response) => {
+        this.notifications = response.data.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 
   data() {
     return {
       selectedEmployee: null,
       notifications: [],
-      employees: [
-        "Jim Halpert",
-        "Dwight Schrute",
-        "Michael Scott",
-        "Pam Beesly",
-        "Angela Martin",
-        "Kelly Kapoor",
-        "Ryan Howard",
-        "Kevin Malone",
-      ],
     };
   },
   methods: {
@@ -139,18 +140,18 @@ export default {
           console.log(error);
         });
     },
-    Notifications() {
-     const email = this.$route.params.email;
-    axios
-      .get(url.url + "/employee/getNotifications?email=" + email)
-      .then((response) => {
-        console.log("not" + response);
-        this.notifications = response.data.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    },
+    // Notifications() {
+    //  const email = this.$route.params.email;
+    // axios
+    //   .get(url.url + "/employee/getNotifications?email=" + email)
+    //   .then((response) => {
+    //     // console.log("not" + response);
+    //     this.notifications = response.data.data;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // },
   },
 };
 </script>

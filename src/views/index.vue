@@ -1,14 +1,14 @@
 <template>
   <v-container>
-    <md-card class="md-card-profile" style="background-color:#000080"
+    <md-card class="md-card-profile" style="background-color:white"
       ><br /><br /><br />
       <div class="md-card-avatar">
-        <img class="img" :src="cardImage" style="margin-left:30px !important; background-color:#000080" />
+        <img class="img" :src="cardImage" style="margin-left:30px !important;" />
       </div>
 
       <md-card-content>
-        <h3 class="card-title" style="color:white !important">Welcome To Audify</h3>
-        <h4 class="card-description" style="color:white !important">
+        <h3 class="card-title" style="color:black !important">Welcome To Audify</h3>
+        <h4 class="card-description" style="color:black !important">
           Please, Login Via Company officals Email and Password for proceed
           further. You will be redirected according to your role.
         </h4>
@@ -16,7 +16,7 @@
           >Login Employee</md-button
         > -->
           <form>
-        <md-card style="background-color:#eeeeee">
+        <md-card style="background-color:white">
 
           <md-card-content>
             <div class="md-layout">
@@ -33,7 +33,7 @@
                 </md-field>
               </div>
               <div class="md-layout-item md-small-size-100 md-size-100">
-                <md-button class="text-center"    v-on:click="submit"
+                <md-button class="text-center" style="color:white !important; background:green !important"   v-on:click="submit"
                   >Login</md-button
                 >
               </div>

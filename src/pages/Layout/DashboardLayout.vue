@@ -23,12 +23,12 @@
         <md-icon>people</md-icon>
         <p>Client Managment</p>
       </sidebar-link>
-      <!--<sidebar-link to="/audify/dashboard">
-        <md-icon>dashboard</md-icon>
-        <p>Dashboard</p>
+     <sidebar-link to="/gitchecks">
+        <md-icon>call_merge</md-icon>
+        <p>Git Checks</p>
       </sidebar-link>
 
-      <sidebar-link to="/audify/user">
+       <!--<sidebar-link to="/audify/user">
         <md-icon>person</md-icon>
         <p>User Profile</p>
       </sidebar-link>
