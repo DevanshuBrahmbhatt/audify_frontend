@@ -23,21 +23,24 @@
                   </md-card-header>
                   <md-card-content>
                     <md-table
-                      v-model="users"
+                      v-model="stats"
                       :table-header-color="tableHeaderColor"
                     >
                       <md-table-row slot="md-table-row" slot-scope="{ item }">
-                        <md-table-cell md-label="Operation Name">{{
-                          item.firstName
-                        }}</md-table-cell>
                         <md-table-cell md-label="Repository">{{
-                          item.project
+                          item.repository
                         }}</md-table-cell>
                         <md-table-cell md-label="Owner Name">{{
-                          item.mobileNo
+                          item.owner
                         }}</md-table-cell>
-                        <md-table-cell md-label="Operator Name">
-                          {{ item._id }}
+                        <md-table-cell md-label="Commiter Name">{{
+                          item.operator
+                        }}</md-table-cell>
+                        <md-table-cell md-label="Created_at">{{
+                          item.created_at
+                        }}</md-table-cell>
+                        <md-table-cell md-label="Commit Message">
+                          {{ item.error_message }}
                           >
                         </md-table-cell>
                       </md-table-row>
@@ -59,9 +62,10 @@ import url from "../../../url";
 export default {
   mounted() {
     axios
-      .get(url.url + "/git/stats")
+      .get(url.url + "/getStat")
       .then((response) => {
-        this.users = response.data.data;
+        console.log(response);
+        this.stats = response.data.data;
       })
       .catch((error) => {
         console.log(error);
@@ -70,7 +74,7 @@ export default {
 
   data() {
     return {
-      users: "",
+      stats: "",
     };
   },
 };
