@@ -41,7 +41,6 @@
                         }}</md-table-cell>
                         <md-table-cell md-label="Commit Message">
                           {{ item.error_message }}
-                          >
                         </md-table-cell>
                       </md-table-row>
                     </md-table>
